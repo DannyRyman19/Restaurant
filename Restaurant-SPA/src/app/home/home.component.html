@@ -1,0 +1,49 @@
+<div *ngIf="loggedIn()" class="floor-screen">
+  <div class="floor">
+    <h1>TABLE FLOOR HERE</h1>
+  </div>
+  <div class="options">
+    <div class="logout-slot">
+      <button class="logout-button" (click)="logout()">LOGOUT</button>
+    </div>
+    <div class="options-slot">
+      <h2>Options</h2>
+      <button class="logout-button">LOGOUT</button>
+      <button class="logout-button">LOGOUT</button>
+    </div>
+    <div class="manager-options-slot">
+      <h2>Manager Options</h2>
+      <button class="logout-button">LOGOUT</button>
+      <button class="logout-button">LOGOUT</button>
+      <button class="logout-button">ACCOUNT MANAGEMENT</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!registerMode">
+  <div *ngIf="!loggedIn()" class="login-area">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+      <h2>Username</h2>
+      <input
+        class="form-control"
+        type="text"
+        name="username"
+        required
+        [(ngModel)]="model.username"
+      />
+      <h2>Password</h2>
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        required
+        [(ngModel)]="model.password"
+      />
+      <button [disabled]="!loginForm.valid" class="login-button">LOGIN</button>
+      <button class="register-button" (click)="registerToggle()">Or Register</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="registerMode">
+  <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+</div>

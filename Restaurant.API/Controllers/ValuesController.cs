@@ -10,7 +10,7 @@ using Restaurant.API.Data;
 namespace DatingApp.API.Controllers
 {
     // http://localhost:5000/api/values
-    [Authorize]
+    [Authorize] 
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
